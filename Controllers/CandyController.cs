@@ -25,5 +25,17 @@ namespace CandyStore.Controllers
             
             return View(candyListViewModel);
         }
+
+
+
+        public IActionResult Details(int candyId)
+        {
+            var candyItem = candyRepository.GetCandyById(candyId);
+            if(candyItem == null)
+            {
+                return NotFound();
+            }
+            return View(candyItem);
+        }
     }
 }

@@ -1,19 +1,32 @@
 ﻿@model CandyListViewModel
     
 <h1>@Model.CurrentCategory</h1>
+
+<div class="row">
+
 @foreach (var item in Model.Candies)
 {
-
+    @*
     <div class="col-sm-4 col-md-4 col-lg-4">
-
         <div class="thumbnail">
             <img src="@item.ImageThumbnailURL" alt="image"/>
             <div class="caption">
                 <h3>@item.Name</h3>
-                <h3 class="pull-right">@item.Price.ToString("c")</h3>
+                <h3 class="float-right">@item.Price.ToString("c")</h3>
                 <p>@item.Description</p>
             </div>
         </div>
+    </div>
+    *@
 
+    <div class="card m-2" style="width: 16rem;">
+        <img class="card-img-top" src="@item.ImageThumbnailURL" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><a asp-controller="Candy" asp-action="Details" asp-route-candyId="@item.CandyId">@item.Name </a></h5>
+            <h4 class="float-right">@item.Price.ToString("c")</h4>
+            <p class="card-text">@item.Description</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
 }
+</div>
