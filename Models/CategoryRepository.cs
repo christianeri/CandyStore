@@ -1,9 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using CandyStore.Data;
+using System.Collections.Generic;
 
 namespace CandyStore.Models
 {
     public class CategoryRepository : ICategoryRepository
     {
-        public IEnumerable<Category> GetAllCategories => throw new System.NotImplementedException();
+        private readonly AppDBContext appDBContext;
+        public CategoryRepository(AppDBContext appDBContext)
+        {
+            this.appDBContext = appDBContext;
+        }
+
+
+
+
+
+        public IEnumerable<Category> GetAllCategories => appDBContext.Categories;
     }
 }

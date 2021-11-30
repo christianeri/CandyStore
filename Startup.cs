@@ -1,7 +1,9 @@
+using CandyStore.Data;
 using CandyStore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,7 @@ namespace CandyStore
 {
     public class Startup
     {
+        //Allows access to Connection String via IConfiguration interface
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
@@ -31,7 +34,7 @@ namespace CandyStore
             services.AddControllersWithViews(); //Added@2.3
             services.AddScoped<ICandyRepository, CandyRepository>(); //Added@3.5
             services.AddScoped<ICategoryRepository, CategoryRepository>(); //Added@3.5
-
+            services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //Added@5.2
         }
 
 
