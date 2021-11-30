@@ -19,7 +19,7 @@ namespace CandyStore.Models
         public string ImageThumbnailURL { get; set; }        
         public bool IsOnSale { get; set; }
         public bool IsInStock { get; set; }
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
         
         public Category Category { get; set; }
