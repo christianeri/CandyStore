@@ -1,0 +1,11 @@
+﻿@model Candy
+
+<div class="card m-2" style="width: 16rem;">
+    <img class="card-img-top" src="@Model.ImageThumbnailURL" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title"><a asp-controller="Candy" asp-action="Details" asp-route-candyId="@Model.CandyId">@Model.Name </a></h5>
+        <h4 class="float-right">@Model.Price.ToString("c")</h4>
+        <p class="card-text">@Model.Description</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
