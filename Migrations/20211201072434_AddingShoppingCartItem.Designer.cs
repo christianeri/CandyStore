@@ -4,14 +4,16 @@ using CandyStore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CandyStore.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211201072434_AddingShoppingCartItem")]
+    partial class AddingShoppingCartItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -304,7 +306,7 @@ namespace CandyStore.Migrations
 
                     b.HasIndex("CandyId");
 
-                    b.ToTable("ShoppingCartItemsDbSet");
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("CandyStore.Models.Candy", b =>

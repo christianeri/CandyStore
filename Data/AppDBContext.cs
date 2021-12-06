@@ -12,6 +12,7 @@ namespace CandyStore.Data
 
         public DbSet<Candy> Candies { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItemsDbSet { get; set;}
 
 
 

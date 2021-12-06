@@ -35,6 +35,12 @@ namespace CandyStore
             services.AddScoped<ICandyRepository, CandyRepository>(); //Added@3.5
             services.AddScoped<ICategoryRepository, CategoryRepository>(); //Added@3.5
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //Added@5.2
+
+            //Added@6.8 {
+            services.AddScoped<ShoppingCart>(shoppingCartObject => ShoppingCart.GetCart(shoppingCartObject)); 
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            // }
         }
 
 
@@ -61,6 +67,7 @@ namespace CandyStore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();//Added@6.8
             app.UseRouting();
             app.UseAuthorization();
 
